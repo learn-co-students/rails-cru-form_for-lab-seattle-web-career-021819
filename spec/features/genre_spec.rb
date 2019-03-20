@@ -1,41 +1,43 @@
 require 'rails_helper'
 
-describe 'navigate' do
-  before do
-    @genre = Genre.create(name: "My Genre")
+describe 'Genre' do
+  describe 'navigate' do
+    before do
+      @genre = Genre.create(name: "My Genre")
+    end
+
+    it 'shows the name on the show page in a h1 tag' do
+      visit "/genres/#{@genre.id}"
+      expect(page).to have_css("h1", text: "My Genre")
+    end
+
+    it 'to genre pages' do
+      visit "/genres/#{@genre.id}"
+      expect(page.status_code).to eq(200)
+    end
   end
 
-  it 'shows the name on the show page in a h1 tag' do
-    visit "/genres/#{@genre.id}"
-    expect(page).to have_css("h1", text: "My Genre")
-  end
+  describe 'form' do
+    it 'shows a new form that submits content and redirects and prints out params' do
+      visit new_genre_path
 
-  it 'to genre pages' do
-    visit "/genres/#{@genre.id}"
-    expect(page.status_code).to eq(200)
-  end
-end
+      fill_in 'genre[name]', with: "My genre name"
 
-describe 'form' do
-  it 'shows a new form that submits content and redirects and prints out params' do
-    visit new_genre_path
+      click_on "Create Genre"
 
-    fill_in 'genre[name]', with: "My genre name"
+      expect(page).to have_content("My genre name")
+    end
 
-    click_on "Create Genre"
+    it 'shows an edit form that submits content and redirects and prints out params' do
+      @genre = Genre.create(name: "My Genre")
 
-    expect(page).to have_content("My genre name")
-  end
+      visit edit_genre_path(@genre)
 
-  it 'shows an edit form that submits content and redirects and prints out params' do
-    @genre = Genre.create(name: "My Genre")
+      fill_in 'genre[name]', with: "My edit"
 
-    visit edit_genre_path(@genre)
+      click_on "Update Genre"
 
-    fill_in 'genre[name]', with: "My edit"
-
-    click_on "Update Genre"
-
-    expect(page).to have_content("My edit")
+      expect(page).to have_content("My edit")
+    end
   end
 end
