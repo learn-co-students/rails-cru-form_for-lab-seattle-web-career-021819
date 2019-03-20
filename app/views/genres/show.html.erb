@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Genre Page</title>
+  </head>
+  <body>
+    <h1>My Genre</h1>
+    <label><h2><%= @genre.name %></h2></label>
+    <%= link_to "Edit Genre", edit_genre_path(@genre) %><br>
+    <%= link_to "Go to All Genres", genres_path %>
+    <%# <%= link_to "#{@artist.name} Songs List", song_path(@artist.id) %>
+  </body>
+</html>

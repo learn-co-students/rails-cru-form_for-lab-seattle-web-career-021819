@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Artist Page</title>
+  </head>
+  <body>
+    <h1>My Artist</h1>
+    <label><h2><%= @artist.name %></h2></label>
+    <p><%= @artist.bio %></p>
+    <%= link_to "Edit Artist", edit_artist_path(@artist) %><br>
+    <%= link_to "Go to All Artists", artists_path %>
+    <%# <%= link_to "#{@artist.name} Songs List", song_path(@artist.id) %>
+  </body>
+</html>

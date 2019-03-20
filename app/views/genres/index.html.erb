@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Genre Index Page</title>
+  </head>
+  <body>
+    <label><h1>All Genres</h1></label>
+    <ul>
+    <% @genres.each do |genre| %>
+    <li><h3><%= link_to genre.name, genre %></h3></li>
+    <% end %>
+    </ul>
+    <%= link_to "Create New Genre", new_genre_path%>
+  </body>
+</html>

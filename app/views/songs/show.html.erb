@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Song Page</title>
+  </head>
+  <body>
+    <h1>My Song</h1>
+    <label><p><%= @song.name %></p></label>
+    <%= link_to "Edit Song", edit_song_path(@song) %><br>
+    <%= (link_to "My Artist", artist_path(@song.artist)) if @song.artist %><br>
+    <%= (link_to "My Genre", genre_path(@song.genre)) if @song.genre %><br>
+    <%= link_to "Go to All Songs", songs_path %>
+    <%# <%= link_to "#{@artist.name} Songs List", song_path(@artist.id) %>
+  </body>
+</html>
