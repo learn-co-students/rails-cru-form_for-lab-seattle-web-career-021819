@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Artist Index Page</title>
+  </head>
+  <body>
+    <label><h1>All Artists</h1></label>
+    <ul>
+    <% @artists.each do |artist| %>
+    <li><h3><%= link_to artist.name, artist %></h3></li>
+    <% end %>
+    </ul>
+    <%= link_to "Create New Artist", new_artist_path%>
+  </body>
+</html>

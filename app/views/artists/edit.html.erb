@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Artist</title>
+  </head>
+  <body>
+    <label><h1>Edit Artist Page</h1></label>
+    <%= form_for @artist do |f| %>
+    <h3><%= f.label :name, "Artist Name" %></h3>
+    <%= f.text_field :name %>
+    <h3><%= f.label :bio, "Short Bio" %></h3>
+    <p><%= f.text_field :bio %></p>
+    <%= f.submit "Update Artist" %>
+    <% end %>
+  </body>
+</html>
